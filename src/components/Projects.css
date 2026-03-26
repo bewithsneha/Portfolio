@@ -1,0 +1,175 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.project-card-wrapper {
+  perspective: 1000px;
+  position: relative;
+}
+
+.project-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+  cursor: none;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out, background 0.4s, border-color 0.4s, box-shadow 0.4s;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  overflow: visible; /* Required for layered effect */
+}
+
+.project-card.is-hovered {
+  background: var(--gradient);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent);
+}
+
+.card-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+  opacity: 0;
+}
+
+/* Background floating glow layer */
+.card-layer-1 {
+  background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
+  filter: blur(40px);
+  transform: translateZ(-50px) scale(0.8);
+}
+
+/* Offset stroke layer */
+.card-layer-2 {
+  border: 1px solid var(--accent);
+  transform: translateZ(-20px) scale(1);
+}
+
+.is-hovered .card-layer-1 {
+  opacity: 0.3;
+  transform: translateZ(-60px) scale(1);
+}
+
+.is-hovered .card-layer-2 {
+  opacity: 0.5;
+  transform: translateZ(-30px) translate(15px, 15px);
+}
+
+.card-content-3d {
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(20px);
+  margin-bottom: 2rem;
+}
+
+.card-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.card-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+
+.card-year {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+.card-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  transform: translateZ(50px);
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+.is-hovered .card-title {
+  color: #fff;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  transform: translateZ(30px);
+  flex: 1;
+}
+
+.is-hovered .card-desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+  transform: translateZ(40px);
+}
+
+.card-links {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1rem;
+  transform: translateZ(60px);
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  transition: all 0.3s;
+  cursor: none;
+}
+
+.card-link:hover {
+  color: white;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.card-link-live {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 800px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

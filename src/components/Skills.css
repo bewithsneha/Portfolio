@@ -1,0 +1,132 @@
+.skills-tree-container {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.skills-tree-wrapper {
+  position: relative;
+  width: 1000px;
+  height: 800px;
+  /* Scale down on smaller screens */
+  transform-origin: center center;
+}
+
+@media (max-width: 1100px) {
+  .skills-tree-wrapper { transform: scale(0.8); }
+}
+@media (max-width: 800px) {
+  .skills-tree-wrapper { transform: scale(0.6); }
+}
+@media (max-width: 500px) {
+  .skills-tree-wrapper { transform: scale(0.4); }
+}
+
+.tree-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tree-branch {
+  fill: none;
+  stroke: rgba(124, 58, 237, 0.3);
+  stroke-width: 2px;
+  transition: stroke 0.3s, stroke-width 0.3s, filter 0.3s;
+}
+
+.tree-branch.active {
+  stroke: rgba(124, 58, 237, 0.8);
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.8));
+}
+
+.tree-html-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+
+/* Base Node Style */
+.tree-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 15, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tree-node:hover {
+  border-color: rgba(124, 58, 237, 0.8);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+  z-index: 10;
+}
+
+/* Center Node */
+.center-node {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, rgba(10,10,15,0.9) 70%);
+  border: 2px solid rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+}
+.center-node h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.8);
+}
+
+/* Category Node */
+.cat-node {
+  width: 90px;
+  height: 90px;
+  background: rgba(20, 20, 30, 0.9);
+}
+.cat-node .cat-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  color: var(--accent2);
+  letter-spacing: 1px;
+}
+
+/* Skill Node */
+.skill-node {
+  width: 70px;
+  height: 70px;
+}
+.skill-node .skill-icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+.skill-node .skill-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tree-node:hover .skill-label {
+  color: #fff;
+}

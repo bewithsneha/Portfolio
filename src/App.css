@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --bg2: #0f0f1a;
+  --bg3: #13131f;
+  --accent1: #7c3aed;
+  --accent2: #06b6d4;
+  --accent3: #a855f7;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glow1: rgba(124, 58, 237, 0.5);
+  --glow2: rgba(6, 182, 212, 0.5);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+/* ─── Section wrapper ─── */
+.section {
+  padding: 100px 5%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-family: 'Orbitron', monospace;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 3.5rem;
+  letter-spacing: 1px;
+}
+
+/* ─── Glitch Effect ─── */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  color: var(--accent2);
+  animation: glitch-clip1 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.glitch::after {
+  color: var(--accent1);
+  animation: glitch-clip2 3s infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-clip1 {
+  0%, 90%, 100%      { transform: none; opacity: 0; }
+  92%                { transform: translate(-3px, 1px); opacity: 0.8; }
+  94%                { transform: translate(3px, -1px); opacity: 0.8; }
+  96%                { transform: translate(-2px, 2px); opacity: 0.8; }
+  98%                { transform: none; opacity: 0; }
+}
+
+@keyframes glitch-clip2 {
+  0%, 90%, 100%      { transform: none; opacity: 0; }
+  91%                { transform: translate(2px, -2px); opacity: 0.8; }
+  93%                { transform: translate(-3px, 1px); opacity: 0.8; }
+  95%                { transform: translate(3px, 2px); opacity: 0.8; }
+  97%                { transform: none; opacity: 0; }
+}
+
+/* ─── Floating animation ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ─── Gradient border / glow pulse ─── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px var(--glow1), 0 0 40px rgba(124,58,237,0.2); }
+  50%       { box-shadow: 0 0 30px var(--glow2), 0 0 60px rgba(6,182,212,0.2); }
+}
+
+/* ─── Gradient text animate ─── */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Button styles ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent2), var(--accent1));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--glow1);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: transparent;
+  border: 1px solid var(--accent1);
+  border-radius: 8px;
+  color: var(--accent1);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--accent1);
+  color: white;
+  box-shadow: 0 8px 32px var(--glow1);
+  transform: translateY(-2px);
+}
+
+/* ─── Tag pill ─── */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+
+.tag-violet {
+  background: rgba(124,58,237,0.15);
+  border-color: rgba(124,58,237,0.4);
+  color: #a78bfa;
+}
+
+.tag-cyan {
+  background: rgba(6,182,212,0.15);
+  border-color: rgba(6,182,212,0.4);
+  color: #67e8f9;
+}
+
+.tag-pink {
+  background: rgba(236,72,153,0.15);
+  border-color: rgba(236,72,153,0.4);
+  color: #f9a8d4;
+}
+
+/* ─── Divider line  ─── */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent1), var(--accent2));
+  border-radius: 3px;
+}

@@ -1,0 +1,129 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.2rem 5%;
+  transition: background 0.4s, backdrop-filter 0.4s, border-bottom 0.4s;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: none;
+  user-select: none;
+}
+
+.logo-bracket {
+  color: var(--accent2);
+  -webkit-text-fill-color: var(--accent2);
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  cursor: none;
+  position: relative;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: width 0.3s;
+  border-radius: 1px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-cta {
+  font-size: 0.72rem !important;
+  padding: 10px 22px !important;
+  cursor: none !important;
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: none;
+  padding: 6px 8px;
+  line-height: 0;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  right: 5%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 8px;
+}
+
+.mobile-link {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  cursor: none;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.mobile-link:hover { color: var(--accent2); }
+
+@media (max-width: 768px) {
+  .navbar-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
