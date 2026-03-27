@@ -84,7 +84,7 @@ export default function About() {
               { value: '3', label: 'Major Projects', color: 'var(--accent1)' },
               { value: '15+', label: 'Skills Mastered', color: 'var(--accent2)' },
               { value: '4', label: 'Certifications', color: 'var(--accent3)' },
-              { value: '7', label: 'CGPA', color: '#f59e0b' },
+              { value: '6.8', label: 'CGPA', color: '#f59e0b' },
             ].map(({ value, label, color }) => (
               <div key={label} className="glass about-card">
                 <span className="card-value" style={{ color }}>{value}</span>
