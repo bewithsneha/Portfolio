@@ -106,7 +106,7 @@ export default function CV() {
           {/* Side info */}
           <div className="cv-highlights">
             {[
-              { emoji: '🎓', title: 'Education', body: 'B.Tech CSE (7.00 CGPA)\nLovely Professional University' },
+              { emoji: '🎓', title: 'Education', body: 'B.Tech CSE (6.80 CGPA)\nLovely Professional University' },
               { emoji: '🏫', title: 'Intermediate', body: 'Burnpur Riverside School, Asansol, West Bengal\n70% | April 2022 - March 2023' },
               { emoji: '📜', title: 'Matriculation', body: 'Burnpur Riverside School, Asansol, West Bengal\n88% | April 2020 - March 2021' },
               { emoji: '💼', title: 'Projects', body: 'Disaster Preparedness AI\nAmazon Clone e-Commerce' },
