@@ -130,7 +130,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.3, duration: 0.7 }}
           >
-            {[['3', 'Projects'], ['15+', 'Skills'], ['4', 'Certifications'], ['7', 'CGPA']].map(([num, label]) => (
+            {[['3', 'Projects'], ['15+', 'Skills'], ['4', 'Certifications'], ['6.8', 'CGPA']].map(([num, label]) => (
               <div key={label} className="stat-item">
                 <span className="stat-number">{num}</span>
                 <span className="stat-label">{label}</span>
